@@ -1,23 +1,19 @@
-<div class="container color-dark">
-  <div class="col">
-    <p>Add a bucket list item</p>
-  </div>
-  <div class="col">
-    <p>Your bucket list ({{itemCount}}) </p>
-  </div>
-</div>
+<mat-card>
+  <mat-card-header>
+    <mat-card-title>Add a bucket list item</mat-card-title>
+    <mat-card-subtitle>Your bucket list ({{itemCount}}) </mat-card-subtitle>
+  </mat-card-header>
+  <mat-card-content>
+    <mat-form-field>
+      <input matInput [(ngModel)]="goalText" placeholder="Enter your goal here">
+    </mat-form-field>
+  </mat-card-content>
+  
+  <button mat-raised-button (click)="addItem()">{{btnText}}</button>
+</mat-card>
 
-<div class="container color-light" [@goals]="goals.length">
-  <div class="col">
-    <p class="sm">Use this form to add items</p>
-    <form>
-      <input type="text" class="txt" name="item" placeholder="goal..." [(ngModel)]="goalText">
-      <input type="text" class="btn" [value]="btnText" (click)="addItem()">
-    </form>
-  </div>
-  <div class="col">
-    <p class="life-container" *ngFor="let goal of goals; let i = index" (click) = "removeItem(i)">
-      {{goal}}
-    </p>
-  </div>
+<div [@goals]="goals.length">
+  <mat-card class="life-container" *ngFor="let goal of goals; let i = index" (click)="removeItem(i)">
+    {{goal}}
+  </mat-card>
 </div>
